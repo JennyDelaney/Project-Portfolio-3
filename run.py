@@ -35,5 +35,14 @@ def get_customer_number():
     print(f"The telephone number given is {phone_num_str}\n")
 
 
+def number_cake_layers():
+    print("How many layers would you like the cake to be?\n")
+    print("Please choose between - 1,2,3 or 4")
+
+    cake_layers_str = input("Please enter the number of layers you would like:")
+    print(f"You have chosen to have a {cake_layers_str} layered cake.")
+
+
 get_customer_name()
 get_customer_number()
+number_cake_layers()
