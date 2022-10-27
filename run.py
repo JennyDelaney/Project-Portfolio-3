@@ -12,8 +12,14 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Bakery_cake_orders')
 
-orders = SHEET.worksheet('orders')
+def get_name_data():
+    """
+    Get Customers name ordering the cake
+    """
+    print("Welcome to Jessie's Bakery\n")
+    print("Please give a name for the cake order")
 
-data = orders.get_all_values()
+    name_str = input("Enter your name here:")
+    print(f"The name of the customer is {name_str}")
 
-print(data)
+get_name_data()
