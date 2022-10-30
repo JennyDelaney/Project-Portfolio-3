@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -43,10 +42,19 @@ def number_cake_layers():
 
 
 def cake_size():
+    """
+    Function to return the different sizes available
+    """
     print("You have the following options for the size of cake - ")
-    sizes = SHEET.worksheet("options").get_all_values()
-    sizes_data = sizes[0]
-    print(sizes_data)
+
+    #options_ws = SHEET.worksheet("options").get_all_values()
+    #size = options_ws[0]
+    size = ["8 inch", "10 inch", "12 inch", "14 inch"]
+    print(f'{size}\n')
+
+    size_str = input('The cake size I would like is -')
+    print(f"A {size_str} cake has been picked.\n")
+
     
 def main():
     """
@@ -56,6 +64,7 @@ def main():
     get_customer_number()
     number_cake_layers()
     cake_size()
+
 
 print("Welcome to Jessie's Bakery Ordering System\n")
 main()
