@@ -20,7 +20,10 @@ def get_customer_name():
     print("Please give a name for the cake order")
 
     name_str = input("Enter your name here:")
-    print(f"The name of the customer is {name_str}\n")
+    if name_str.isalpha():
+        print(f"The name of the customer is {name_str}\n")
+    else:
+        print("Customer name must contain only letters\n")
     return name_str
 
 
@@ -37,13 +40,13 @@ def get_customer_number(name):
 
 def number_cake_tiers(name):
     """
-    Get the number of layers the customer would like the cake
+    Get the number of tiers the customer would like the cake
     """
-    print(f"{name}, how many layers would you like the cake to be?")
+    print(f"{name}, how many tiers would you like the cake to be?")
     print("Please choose between - 1,2,3 or 4")
 
-    cake_tiers_str = input("Please enter the no. of layers you would like:")
-    print(f"You have chosen to have a {cake_tiers_str} layered cake.\n")
+    cake_tiers_str = input("Please enter the no. of tiers you would like:")
+    print(f"You have chosen to have a {cake_tiers_str} tiered cake.\n")
     return cake_tiers_str
 
 
@@ -55,11 +58,17 @@ def cake_options(name, customer_number, number_tiers):
 
     # Confirmation of cake size
     print("You have the following options for the size of cake - ")
+    print("Please choose option 0, 1, 2 or 3")
     cake_sizes = [item[0] for item in options_ws]
     cake_sizes.pop(0)
-    print(cake_sizes)
+    for i, cake_size in enumerate(cake_sizes):
+        print(i, cake_size)
     size = input("The cake size I would like is option - ")
-    print(f"A {size} cake has been picked.\n")
+    size_choice = int(size)
+    if size_choice <= 3:
+        print(f"You have chosen option {size}\n")
+    else:
+        print("Invalid choice. Please choose size option 0, 1, 2 or 3")
 
     # Confirmation of sponge flavour
     print("You have the following options for flavour of sponge - ")
@@ -75,13 +84,13 @@ def cake_options(name, customer_number, number_tiers):
     del filling_types[0]
     del filling_types[2:]
     print(filling_types)
-    filling_str = input("The filling I would like is - ")
+    filling_str = input("The filling I would like is number - ")
     print(f"You have picked a {filling_str} filling.\n")
 
     # Confirmation of cake order
     print(f"{name}, {customer_number}: You have ordered the following cake - ")
     print(
-        f"{number_tiers} tiers, {size} {sponge_flav_str} with {filling_str}"
+        f"{number_tiers} tiers, {size} {sponge_flav_str} with {filling_str}\n"
     )
 
 
