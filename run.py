@@ -63,13 +63,13 @@ def number_cake_tiers(name):
     for i, cake_tier in enumerate(cake_tiers):
         print(i, cake_tier)
     while True:
-        tier_choice = input("The cake size I would like is option - ")
-        tier_choice = int(tier_choice)
+        tier_num = input("The cake size I would like is option - ")
+        tier_choice = int(tier_num)
         if tier_choice > 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
             continue
         else:
-            print(f"You have chosen option {tier_choice}\n")
+            print(f"You have chosen option {cake_tiers[tier_choice]}\n")
             break
 
     return cake_tiers
@@ -84,21 +84,24 @@ def cake_options(name, customer_number, number_tiers):
     # Confirmation of cake size
     print("You have the following options for the size of cake - ")
     print("Please choose option 0, 1, 2 or 3")
-    cake_sizes = [item[1] for item in options_ws]
-    cake_sizes.pop(1)
-    for i, cake_size in enumerate(cake_sizes):
-        print(i, cake_size)
-    size = input("The cake size I would like is option - ")
-    size_choice = int(size)
-    if size_choice <= 3:
-        print(f"You have chosen option {size}\n")
-    else:
-        print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+    while True:
+        cake_sizes = [item[1] for item in options_ws]
+        cake_sizes.pop(0)
+        for i, cake_size in enumerate(cake_sizes):
+            print(i, cake_size)
+        size = input("The cake size I would like is option - ")
+        size_choice = int(size)
+        if size_choice > 4:
+            print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+            continue
+        else:
+            print(f"You have chosen a {cake_sizes[size_choice]} cake\n")
+            break
 
     # Confirmation of sponge flavour
     print("You have the following options for flavour of sponge - ")
     sponge_flavours = [item[2] for item in options_ws]
-    sponge_flavours = sponge_flavours[2:]
+    sponge_flavours = sponge_flavours[1:]
     print(sponge_flavours)
     sponge_flav_str = input("Choose the sponge flavour that you would like - ")
     print(f"You have picked a {sponge_flav_str} sponge flavour.\n")
@@ -107,7 +110,7 @@ def cake_options(name, customer_number, number_tiers):
     print("Which type of filling would you like - ")
     filling_types = [item[3] for item in options_ws]
     del filling_types[0]
-    del filling_types[3:]
+    del filling_types[2:]
     print(filling_types)
     filling_str = input("The filling I would like is number - ")
     print(f"You have picked a {filling_str} filling.\n")
