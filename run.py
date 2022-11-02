@@ -19,11 +19,15 @@ def get_customer_name():
     """
     print("Please give a name for the cake order")
 
-    name_str = input("Enter your name here:")
-    if name_str.isalpha():
-        print(f"The name of the customer is {name_str}\n")
-    else:
-        print("Customer name must contain only letters\n")
+    while True:
+        name_str = input("Enter your name here:")
+        if not name_str.isalpha():
+            print("Customer name must contain letters only\n")
+            continue
+        else:
+            print(f"The name of the customer is {name_str}\n")
+            break
+
     return name_str
 
 
@@ -33,8 +37,15 @@ def get_customer_number(name):
     """
     print(f"{name}, please confirm a contact telephone number for the order")
 
-    phone_num_str = input("Enter your telephone number here:")
-    print(f"The telephone number given is {phone_num_str}\n")
+    while True:
+        phone_num_str = input("Enter your telephone number here:")
+        if not phone_num_str.isdigit():
+            print("Customer number must not contain letters\n")
+            continue
+        else:
+            print(f"The telephone number given is {phone_num_str}\n")
+            break
+
     return phone_num_str
 
 
@@ -45,8 +56,16 @@ def number_cake_tiers(name):
     print(f"{name}, how many tiers would you like the cake to be?")
     print("Please choose between - 1,2,3 or 4")
 
-    cake_tiers_str = input("Please enter the no. of tiers you would like:")
-    print(f"You have chosen to have a {cake_tiers_str} tiered cake.\n")
+    while True:
+        cake_tiers_str = (input("Please enter the no. of tiers you would like:")
+        cake_tier_str = [int(cake_tier_str) for cake_tier_str in cake_tiers_str]
+        if cake_tiers_str != range(1, 4):
+            print("Please choose between - 1,2,3 or 4")
+            continue
+        else:
+            print(f"You have chosen to have a {cake_tiers_str} tiered cake.\n")
+            break
+
     return cake_tiers_str
 
 
