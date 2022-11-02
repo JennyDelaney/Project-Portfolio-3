@@ -72,7 +72,7 @@ def number_cake_tiers(name):
             print(f"You have chosen {cake_tiers[tier_choice]}\n")
             break
 
-    return cake_tiers
+    return cake_tiers[tier_choice]
 
 
 def cake_options(name, customer_number, number_tiers):
@@ -106,14 +106,12 @@ def cake_options(name, customer_number, number_tiers):
         print(i, sponge_flav)
     while True:
         sponge_flav_str = input("Choose the sponge flavour - ")
-        sponge_flav_choice = int(sponge_flav_str)
-        if sponge_flav_choice > 4:
+        sponge_choice = int(sponge_flav_str)
+        if sponge_choice > 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
             continue
         else:
-            print(
-                f"You've picked a {sponge_flavs[sponge_flav_choice]} sponge.\n"
-                )
+            print(f"You've picked a {sponge_flavs[sponge_choice]} sponge.\n")
             break
 
     # Confirmation of filling
@@ -137,8 +135,8 @@ def cake_options(name, customer_number, number_tiers):
 
     # Confirmation of cake order
     print(f"{name}, {customer_number}: You have ordered the following cake - ")
-    #print(f"{number_tiers[tier_choice]}, {cake_sizes[size_choice]}")
-    print(f" {sponge_flavs[sponge_flav_choice]} sponge")
+    print(f"{number_tiers}, {cake_sizes[size_choice]}")
+    print(f" {sponge_flavs[sponge_choice]} sponge")
     print(f" with {filling_types[filling_choice]}\n")
 
 
@@ -150,7 +148,7 @@ def main():
     customer_number = get_customer_number(name)
     number_tiers = number_cake_tiers(name)
     cake_options(name, customer_number, number_tiers)
-    
+
 
 print("Welcome to Jessie's Bakery Ordering System\n")
 main()
