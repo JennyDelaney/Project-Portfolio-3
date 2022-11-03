@@ -65,7 +65,7 @@ def number_cake_tiers(name):
     while True:
         tier_num = input("The no of tiers I would like is option - ")
         tier_choice = int(tier_num)
-        if tier_choice > 4:
+        if tier_choice >= 4:
             print("Invalid choice. Please choose option 0, 1, 2 or 3")
             continue
         else:
@@ -91,7 +91,7 @@ def cake_options(name, customer_number, number_tiers):
     while True:
         size = input("The cake size I would like is option - ")
         size_choice = int(size)
-        if size_choice > 4:
+        if size_choice >= 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
             continue
         else:
@@ -107,7 +107,7 @@ def cake_options(name, customer_number, number_tiers):
     while True:
         sponge_flav_str = input("Choose the sponge flavour - ")
         sponge_choice = int(sponge_flav_str)
-        if sponge_choice > 4:
+        if sponge_choice >= 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
             continue
         else:
@@ -124,7 +124,7 @@ def cake_options(name, customer_number, number_tiers):
     while True:
         filling_str = input("The filling I would like is number - ")
         filling_choice = int(filling_str)
-        if filling_choice > 2:
+        if filling_choice >= 2:
             print("Invalid choice. Please choose size option 0, 1")
             continue
         else:
@@ -134,10 +134,33 @@ def cake_options(name, customer_number, number_tiers):
             break
 
     # Confirmation of cake order
-    print(f"{name}, {customer_number}: You have ordered the following cake - ")
+    print(f"{name}, {customer_number}: You chosen the following cake - ")
     print(f"{number_tiers}, {cake_sizes[size_choice]}")
     print(f" {sponge_flavs[sponge_choice]} sponge")
     print(f" with {filling_types[filling_choice]}\n")
+
+
+def order_confirmation(name, customer_number, number_tiers):
+    """
+    Confirmation of order from Customer.  If Yes update order worksheet
+    if No exit
+    """
+    print("Are you happy with your choices, if so please confirm the order")
+    while True:
+        order = input("Please enter yes(y) or no(n) - ")
+        if order == "yes" or order == "y":
+           # order_worksheet = SHEET.worksheet("orders")
+           # order_worksheet.append_row(name, customer_number, number_tiers)
+            print("Thank you for your order, your cake will be available soon")
+            break
+        elif order == "no" or order == "n":
+            print("Your order has not been placed")
+            print("We hope you will call again to make an order.")
+            break
+        else:
+            print("The option you have picked appears to be invalid.")
+            print("Please confirm your order")
+            continue
 
 
 def main():
@@ -148,6 +171,7 @@ def main():
     customer_number = get_customer_number(name)
     number_tiers = number_cake_tiers(name)
     cake_options(name, customer_number, number_tiers)
+    order_confirmation(name, customer_number, number_tiers)
 
 
 print("Welcome to Jessie's Bakery Ordering System\n")
