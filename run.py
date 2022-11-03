@@ -11,6 +11,9 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Bakery_cake_orders")
+chosen_size = ""
+chosen_sponge = ""
+chosen_filling = ""
 
 
 def get_customer_name():
@@ -40,7 +43,7 @@ def get_customer_number(name):
     while True:
         phone_num_str = input("Enter your telephone number here:\n")
         if not phone_num_str.isdigit():
-            print("Customer number must not contain letters\n")
+            print("Customer number must contain digits only.\n")
             continue
         else:
             print(f"The telephone number given is {phone_num_str}\n")
@@ -97,6 +100,8 @@ def cake_options(name, customer_number, number_tiers):
         else:
             print(f"You have chosen a {cake_sizes[size_choice]} cake\n")
             break
+    global chosen_size
+    chosen_size = cake_sizes[size_choice]
 
     # Confirmation of sponge flavour
     print("You have the following options for flavour of sponge - ")
@@ -113,6 +118,9 @@ def cake_options(name, customer_number, number_tiers):
         else:
             print(f"You've picked a {sponge_flavs[sponge_choice]} sponge.\n")
             break
+
+    global chosen_sponge
+    chosen_sponge = sponge_flavs[sponge_choice]
 
     # Confirmation of filling
     print("Which type of filling would you like - ")
@@ -133,6 +141,8 @@ def cake_options(name, customer_number, number_tiers):
             )
             break
 
+    global chosen_filling
+    chosen_filling = filling_types[filling_choice]
     # Confirmation of cake order
     print(f"{name}, {customer_number}: You chosen the following cake - ")
     print(f"{number_tiers}, {cake_sizes[size_choice]}")
@@ -149,9 +159,22 @@ def order_confirmation(name, customer_number, number_tiers):
     while True:
         order = input("Please enter yes(y) or no(n) - \n")
         if order == "yes" or order == "y":
-           # order_worksheet = SHEET.worksheet("orders")
-           # order_worksheet.append_row(name, customer_number, number_tiers)
-            print("Thank you for your order, your cake will be available soon")
+            order_list = [
+                name,
+                customer_number,
+                number_tiers,
+                chosen_size,
+                chosen_sponge,
+                chosen_filling
+            ]
+            order_worksheet = SHEET.worksheet("orders")
+            order_worksheet.append_row(order_list)
+            print(
+                "Thank you for your order, your cake will be available soon."
+                )
+            print(
+                "Please run the program again if you would like another cake"
+                )
             break
         elif order == "no" or order == "n":
             print("Your order has not been placed")
