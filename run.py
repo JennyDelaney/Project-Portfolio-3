@@ -25,7 +25,7 @@ def get_customer_name():
     while True:
         name_str = input("Enter your name here:\n")
         if not name_str.isalpha():
-            print("Customer name must contain letters only\n")
+            print("Customer name must contain letters only (no spaces).\n")
             continue
         else:
             print(f"The name of the customer is {name_str}\n")
@@ -43,7 +43,7 @@ def get_customer_number(name):
     while True:
         phone_num_str = input("Enter your telephone number here:\n")
         if not phone_num_str.isdigit():
-            print("Customer number must contain digits only.\n")
+            print("Customer number must contain digits only (no spaces).\n")
             continue
         else:
             print(f"The telephone number given is {phone_num_str}\n")
