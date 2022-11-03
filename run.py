@@ -20,7 +20,7 @@ def get_customer_name():
     print("Please give a name for the cake order")
 
     while True:
-        name_str = input("Enter your name here:")
+        name_str = input("Enter your name here:\n")
         if not name_str.isalpha():
             print("Customer name must contain letters only\n")
             continue
@@ -38,7 +38,7 @@ def get_customer_number(name):
     print(f"{name}, please confirm a contact telephone number for the order")
 
     while True:
-        phone_num_str = input("Enter your telephone number here:")
+        phone_num_str = input("Enter your telephone number here:\n")
         if not phone_num_str.isdigit():
             print("Customer number must not contain letters\n")
             continue
@@ -63,7 +63,7 @@ def number_cake_tiers(name):
     for i, cake_tier in enumerate(cake_tiers):
         print(i, cake_tier)
     while True:
-        tier_num = input("The no of tiers I would like is option - ")
+        tier_num = input("The no of tiers I would like is option - \n")
         tier_choice = int(tier_num)
         if tier_choice >= 4:
             print("Invalid choice. Please choose option 0, 1, 2 or 3")
@@ -89,7 +89,7 @@ def cake_options(name, customer_number, number_tiers):
     for i, cake_size in enumerate(cake_sizes):
         print(i, cake_size)
     while True:
-        size = input("The cake size I would like is option - ")
+        size = input("The cake size I would like is option - \n")
         size_choice = int(size)
         if size_choice >= 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
@@ -105,7 +105,7 @@ def cake_options(name, customer_number, number_tiers):
     for i, sponge_flav in enumerate(sponge_flavs):
         print(i, sponge_flav)
     while True:
-        sponge_flav_str = input("Choose the sponge flavour - ")
+        sponge_flav_str = input("Choose the sponge flavour - \n")
         sponge_choice = int(sponge_flav_str)
         if sponge_choice >= 4:
             print("Invalid choice. Please choose size option 0, 1, 2 or 3")
@@ -122,7 +122,7 @@ def cake_options(name, customer_number, number_tiers):
     for i, filling_type in enumerate(filling_types):
         print(i, filling_type)
     while True:
-        filling_str = input("The filling I would like is number - ")
+        filling_str = input("The filling I would like is number - \n")
         filling_choice = int(filling_str)
         if filling_choice >= 2:
             print("Invalid choice. Please choose size option 0, 1")
@@ -147,7 +147,7 @@ def order_confirmation(name, customer_number, number_tiers):
     """
     print("Are you happy with your choices, if so please confirm the order")
     while True:
-        order = input("Please enter yes(y) or no(n) - ")
+        order = input("Please enter yes(y) or no(n) - \n")
         if order == "yes" or order == "y":
            # order_worksheet = SHEET.worksheet("orders")
            # order_worksheet.append_row(name, customer_number, number_tiers)
