@@ -20,10 +20,11 @@ def get_customer_name():
     """
     Get Customers name ordering the cake
     """
-    print("Please give a name for the cake order")
+    print("Please give a first name for the cake order")
+    print("Customer name must contain letters only (no spaces).\n")
 
     while True:
-        name_str = input("Enter your name here:\n")
+        name_str = input("Enter your first name here:\n")
         if not name_str.isalpha():
             print("Customer name must contain letters only (no spaces).\n")
             continue
@@ -67,14 +68,18 @@ def number_cake_tiers(name):
         print(i, cake_tier)
     while True:
         tier_num = input("The no of tiers I would like is option - \n")
-        tier_choice = int(tier_num)
-        if tier_choice >= 4:
-            print("Invalid choice. Please choose option 0, 1, 2 or 3")
+        try:
+            tier_choice = int(tier_num)
+            if tier_choice >= 4:
+                print("Invalid choice. Please choose option 0, 1, 2 or 3")                
+                continue
+            else:
+                print(f"You have chosen {cake_tiers[tier_choice]}\n")
+                break
+        except ValueError:
+            print(f"{tier_num} is not a number, please enter a number only")
             continue
-        else:
-            print(f"You have chosen {cake_tiers[tier_choice]}\n")
-            break
-
+      
     return cake_tiers[tier_choice]
 
 
