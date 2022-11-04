@@ -71,7 +71,7 @@ def number_cake_tiers(name):
         try:
             tier_choice = int(tier_num)
             if tier_choice >= 4:
-                print("Invalid choice. Please choose option 0, 1, 2 or 3")                
+                print("Invalid choice. Please choose option 0, 1, 2 or 3")
                 continue
             else:
                 print(f"You have chosen {cake_tiers[tier_choice]}\n")
@@ -79,7 +79,7 @@ def number_cake_tiers(name):
         except ValueError:
             print(f"{tier_num} is not a number, please enter a number only")
             continue
-      
+
     return cake_tiers[tier_choice]
 
 
@@ -98,13 +98,18 @@ def cake_options(name, customer_number, number_tiers):
         print(i, cake_size)
     while True:
         size = input("The cake size I would like is option - \n")
-        size_choice = int(size)
-        if size_choice >= 4:
-            print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+        try:
+            size_choice = int(size)
+            if size_choice >= 4:
+                print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+                continue
+            else:
+                print(f"You have chosen a {cake_sizes[size_choice]} cake\n")
+                break
+        except ValueError:
+            print(f"{size} is not a number, please enter a number only")
             continue
-        else:
-            print(f"You have chosen a {cake_sizes[size_choice]} cake\n")
-            break
+
     global chosen_size
     chosen_size = cake_sizes[size_choice]
 
