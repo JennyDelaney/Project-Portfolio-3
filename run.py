@@ -121,13 +121,21 @@ def cake_options(name, customer_number, number_tiers):
         print(i, sponge_flav)
     while True:
         sponge_flav_str = input("Choose the sponge flavour - \n")
-        sponge_choice = int(sponge_flav_str)
-        if sponge_choice >= 4:
-            print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+        try:
+            sponge_choice = int(sponge_flav_str)
+            if sponge_choice >= 4:
+                print("Invalid choice. Please choose size option 0, 1, 2 or 3")
+                continue
+            else:
+                print(
+                    f"You've picked a {sponge_flavs[sponge_choice]} sponge.\n"
+                    )
+                break
+        except ValueError:
+            print(
+                f"{sponge_flav_str} is not a valid, please enter a number only"
+                )
             continue
-        else:
-            print(f"You've picked a {sponge_flavs[sponge_choice]} sponge.\n")
-            break
 
     global chosen_sponge
     chosen_sponge = sponge_flavs[sponge_choice]
