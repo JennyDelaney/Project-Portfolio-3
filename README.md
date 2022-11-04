@@ -37,11 +37,11 @@ More options to the cakes could be added to it, to increase and extend the varie
 
 ## Technologies Used
 
-Python
-GitHub
-GitPod
-Heroku
-Google Spreadsheet
+- Python
+- GitHub
+- GitPod
+- Heroku
+- Google Spreadsheet
 
 ## Testing
 
