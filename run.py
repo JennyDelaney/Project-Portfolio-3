@@ -31,7 +31,6 @@ def get_customer_name():
         else:
             print(f"The name of the customer is {name_str}\n")
             break
-
     return name_str
 
 
@@ -49,7 +48,6 @@ def get_customer_number(name):
         else:
             print(f"The telephone number given is {phone_num_str}\n")
             break
-
     return phone_num_str
 
 
@@ -77,9 +75,8 @@ def number_cake_tiers(name):
                 print(f"You have chosen {cake_tiers[tier_choice]}\n")
                 break
         except ValueError:
-            print(f"{tier_num} is not a number, please enter a number only")
+            print(f"{tier_num} is not valid, please enter a number only")
             continue
-
     return cake_tiers[tier_choice]
 
 
@@ -107,9 +104,8 @@ def cake_options(name, customer_number, number_tiers):
                 print(f"You have chosen a {cake_sizes[size_choice]} cake\n")
                 break
         except ValueError:
-            print(f"{size} is not a number, please enter a number only")
+            print(f"{size} is not valid, please enter a number only")
             continue
-
     global chosen_size
     chosen_size = cake_sizes[size_choice]
 
@@ -129,14 +125,13 @@ def cake_options(name, customer_number, number_tiers):
             else:
                 print(
                     f"You've picked a {sponge_flavs[sponge_choice]} sponge.\n"
-                    )
+                )
                 break
         except ValueError:
             print(
-                f"{sponge_flav_str} is not a valid, please enter a number only"
-                )
+                f"{sponge_flav_str} is not valid, please enter a number only"
+            )
             continue
-
     global chosen_sponge
     chosen_sponge = sponge_flavs[sponge_choice]
 
@@ -149,23 +144,26 @@ def cake_options(name, customer_number, number_tiers):
         print(i, filling_type)
     while True:
         filling_str = input("The filling I would like is number - \n")
-        filling_choice = int(filling_str)
-        if filling_choice >= 2:
-            print("Invalid choice. Please choose size option 0, 1")
+        try:
+            filling_pick = int(filling_str)
+            if filling_pick >= 2:
+                print("Invalid choice. Please choose size option 0, 1")
+                continue
+            else:
+                print(
+                    f"You've picked a {filling_types[filling_pick]} filling.\n"
+                )
+                break
+        except ValueError:
+            print(f"{filling_str} is not valid, please enter a number only")
             continue
-        else:
-            print(
-                f"You've picked a {filling_types[filling_choice]} filling.\n"
-            )
-            break
-
     global chosen_filling
-    chosen_filling = filling_types[filling_choice]
+    chosen_filling = filling_types[filling_pick]
     # Confirmation of cake order
     print(f"{name}, {customer_number}: You chosen the following cake - ")
     print(f"{number_tiers}, {cake_sizes[size_choice]}")
     print(f" {sponge_flavs[sponge_choice]} sponge")
-    print(f" with {filling_types[filling_choice]}\n")
+    print(f" with {filling_types[filling_pick]}\n")
 
 
 def order_confirmation(name, customer_number, number_tiers):
@@ -183,16 +181,16 @@ def order_confirmation(name, customer_number, number_tiers):
                 number_tiers,
                 chosen_size,
                 chosen_sponge,
-                chosen_filling
+                chosen_filling,
             ]
             order_worksheet = SHEET.worksheet("orders")
             order_worksheet.append_row(order_list)
             print(
                 "Thank you for your order, your cake will be available soon."
-                )
+            )
             print(
                 "Please run the program again if you would like another cake"
-                )
+            )
             break
         elif order == "no" or order == "n":
             print("Your order has not been placed")
