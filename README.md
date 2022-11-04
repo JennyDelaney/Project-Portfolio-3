@@ -83,6 +83,10 @@ Friends and family were asked to test the program and it was discovered that whe
 
 After fixing the code by adding a try and except to handle this error it solved the problem.
 
+### Final Testing outcomes - 
+
+![Testing Outcomes](/readme_images/testing_outcome.jpg)
+
 ## Deployment
 
 The site had been deployed through Heroku.
