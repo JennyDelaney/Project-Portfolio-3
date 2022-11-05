@@ -39,10 +39,9 @@ def get_customer_number(name):
     Get Customers telephone number for the order
     """
     print(f"{name}, please confirm a contact telephone number for the order")
-
+    print("Customer number must contain digits only (no spaces).\n")
     while True:
         phone_num_str = input("Enter your telephone number here:\n")
-        print("Customer number must contain digits only (no spaces).\n")
         if not phone_num_str.isdigit():
             print("Customer number must contain digits only (no spaces).\n")
             continue
@@ -175,6 +174,7 @@ def order_confirmation(name, customer_number, number_tiers):
     if No exit
     """
     print("Are you happy with your choices, if so please confirm the order:")
+    print("If you want to change anything, please run program again")
     while True:
         order = input("Please enter Yes(Y) or No(N) - \n")
         if order == "Yes" or order == "Y":

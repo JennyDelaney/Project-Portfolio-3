@@ -90,7 +90,26 @@ After fixing the code by adding a try and except to handle this error it solved 
 ## Deployment
 
 The site had been deployed through Heroku.
-The site had been developed on GitPod, committed and pushed to GitHub. And Heroku once the site is deployed would update automatically.
+The site had been developed on GitPod, and passed to GitHub in stages using git add . , git commit -m and git push to store content on GitHub.  Once the site was deployed to Heroku it was set to update automatically.
+
+## Deployment proccess to Heroku:
+
+Log in Github.
+Open the repo to deploy. The one for the site is here.
+Log in Heroku.
+Click in the "New" button in the top right.
+Select "Create New App"
+Give a name to the App and choose a region.
+Click in "Create App" button.
+Go to Settings in the nav bar, and select Config Vars. In here KEY = CREDS was created with the value of the requriements.txt file from GitPod, PORT value 8000 was also added.
+Then select "Add Buildpacks".
+Add Python and save, do the same for Node.js, in that order. Python must show first in the list.
+Go to Deploy in the nav bar. In Deployment Method, select GitHub/Connect to GitHub.
+In Connect to GitHub, write the repository name and click in search.
+Once the route for the repo appears under the search, click in "Connect" button.
+The deployment can be Manual or Automatic, select the one of your preference. Automatic has the advantage of updating your deployed site as you push the commit in GitHub.
+Verify that "Branch to deploy" is master/main.
+Click Deploy.
 
 ## Credits
 
